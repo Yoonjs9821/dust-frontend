@@ -16,9 +16,9 @@ class Main extends Component {
     // 2. 좌표를 구한뒤 공공데이터 api 로 측정소 위치 구하기
     // 3. 측정소 위치의 미세먼지 정보 구하기            
     getLocation = async () => {
-        let latitude = "";
-        let longitude = "";
-        let textContent = "";
+        var latitude = "";
+        var longitude = "";
+        const textContent = "";
 
         if('geolocation' in navigator) {
             /* 위치정보 사용 가능 */
@@ -42,8 +42,8 @@ class Main extends Component {
             window.location.href='http://'+window.location.host+'/?latitude='+latitude+'&longitude='+longitude;
         } else {
             const params = new URLSearchParams(window.location.search);
-            latitude = params.get(latitude);
-            longitude = params.get(longitude);
+            latitude = params.get('latitude');
+            longitude = params.get('longitude');
 
             // 1. 통계청 auth key 생성
             let url1 = serverUrl + "/datago/sgisAuth";
