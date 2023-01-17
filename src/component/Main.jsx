@@ -33,14 +33,14 @@ class Main extends Component {
                 }
             }, err => {
                 console.log(err);
+
+                // 테스트 코드 작성
+                const params = new URLSearchParams(window.location.search);
+                this.getDustInfo(params.get('latitude'), params.get('longitude'));
             });
         } else {
             /* 위치정보 사용 불가능 */
             console.log('위치정보 사용 불가능');
-            
-            // 테스트 코드 작성
-            const params = new URLSearchParams(window.location.search);
-            this.getDustInfo(params.get('latitude'), params.get('longitude'));
         }
     }
 
