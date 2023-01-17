@@ -37,7 +37,7 @@ class Main extends Component {
             console.log('위치정보 사용 불가능');
         }
 
-        if(currentUrl.indexOf('https') > 0){
+        if(currentUrl.indexOf('https') > -1){
             // http로 이동
             window.location.href='http://'+window.location.host+'/?latitude='+latitude+'&longitude='+longitude;
         } else {
