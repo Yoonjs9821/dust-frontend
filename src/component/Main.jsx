@@ -25,12 +25,14 @@ class Main extends Component {
                 let textContent = 'Your location data is ' + latitude + ', ' + longitude;
                 console.log(textContent);
     
-                if(currentUrl.indexOf('https') > -1){
-                    // http로 이동
-                    window.location.href='http://'+window.location.host+'/?latitude='+latitude+'&longitude='+longitude;
-                } else {
-                    this.getDustInfo(latitude, longitude);
-                }
+                // if(currentUrl.indexOf('https') > -1){
+                //     // http로 이동
+                //     window.location.href='http://'+window.location.host+'/?latitude='+latitude+'&longitude='+longitude;
+                // } else {
+                    
+                // }
+
+                this.getDustInfo(latitude, longitude);
             }, err => {
                 console.log(err);
 
