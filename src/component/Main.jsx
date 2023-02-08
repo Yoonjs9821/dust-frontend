@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-const serverUrl = "http://ec2-52-78-154-77.ap-northeast-2.compute.amazonaws.com:9000";
+// const serverUrl = "http://ec2-52-78-154-77.ap-northeast-2.compute.amazonaws.com:9000";
+const serverUrl = "https://www.yoonjs92.com:9000";
 // const serverUrl = "http://localhost:9000";
 const currentUrl = window.location.href;
 
