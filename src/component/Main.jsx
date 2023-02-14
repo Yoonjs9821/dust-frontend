@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import "../Main.css"
 
 // const serverUrl = "http://ec2-52-78-154-77.ap-northeast-2.compute.amazonaws.com:9000";
-const serverUrl = "https://www.yoonjs92.com:9000";
 // const serverUrl = "http://localhost:9000";
-const currentUrl = window.location.href;
+
+const serverUrl = "https://www.yoonjs92.com:9000";
 
 class Main extends Component {
     state = {
@@ -25,21 +26,10 @@ class Main extends Component {
                 let longitude = pos.coords.longitude;
                 let textContent = 'Your location data is ' + latitude + ', ' + longitude;
                 console.log(textContent);
-    
-                // if(currentUrl.indexOf('https') > -1){
-                //     // http로 이동
-                //     window.location.href='http://'+window.location.host+'/?latitude='+latitude+'&longitude='+longitude;
-                // } else {
-                    
-                // }
 
                 this.getDustInfo(latitude, longitude);
             }, err => {
                 console.log(err);
-
-                // 테스트 코드 작성
-                const params = new URLSearchParams(window.location.search);
-                this.getDustInfo(params.get('latitude'), params.get('longitude'));
             });
         } else {
             /* 위치정보 사용 불가능 */
@@ -99,16 +89,49 @@ class Main extends Component {
 
         return(
             <section className="container">
-              {isLoading ? (
+                {isLoading ? (
                 <div className="loader">
                   <span className="loader_text">Loading...</span>
                 </div>
               ):(
                 <div>
-                    내주변 측정소 : {location[0].stationName} 측정소 <br/>
-                    측정 시간 : {data[0].dataTime} <br/>
-                    미세먼지 : {data[0].pm10Value} ㎍/㎥<br/>
-                    초미세먼지 : {data[0].pm25Value} ㎍/㎥
+                <div className="Frame4">
+                    <img src={process.env.PUBLIC_URL + "/img/icon.png"}
+                        srcSet="img/icon@2x.png 2x,                          
+                                img/icon@3x.png 3x"
+                        className="Icon"></img>
+                    <div className="Frame5">
+                        <div className="Icon3"></div>
+                        <img src={process.env.PUBLIC_URL + "/img/icon_2.png"}
+                            srcSet="img/icon_2@2x.png 2x,
+                                    img/icon_2@3x.png 3x"
+                            className="Icon2"></img>
+                    </div>
+                </div>
+                <div className="wrap">
+                    <span className="time">
+                        {data[0].dataTime}
+                    </span>
+                    <span className="locate">
+                        {location[0].stationName}
+                    </span>
+                    <span className="comment">
+                        최고 깨끗한 공기
+                    </span>
+                </div>
+                <div className="Rectangle3"></div>
+                <div className="Details">
+                    <div className="Detail1">
+                        <span className="text1">미세먼지</span>
+                        <span className="text2">{data[0].pm10Value}</span>
+                        <span className="text3">㎍/m³</span>
+                    </div>
+                    <div className="Detail1">
+                        <span className="text1">초미세먼지</span>
+                        <span className="text2">{data[0].pm25Value}</span>
+                        <span className="text3">㎍/m³</span>
+                    </div>
+                </div>
                 </div>
               )}
             </section>

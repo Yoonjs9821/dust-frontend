@@ -11,9 +11,8 @@ import * as React from 'react';
 
 const Header = () => {
   const StatusBardark = {
-    width: "375px",
     height: "40px",
-    padding: "14.1px 14.3px 7.9px 31px"
+    opacity: "0"
   }
   return (
     <div style={StatusBardark}></div>
