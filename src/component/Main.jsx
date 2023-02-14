@@ -96,15 +96,11 @@ class Main extends Component {
               ):(
                 <div>
                 <div className="Frame4">
-                    <img src={process.env.PUBLIC_URL + "/img/icon.png"}
-                        srcSet="img/icon@2x.png 2x,                          
-                                img/icon@3x.png 3x"
+                    <img src={require("../assets/Icon.png")}
                         className="Icon"></img>
                     <div className="Frame5">
                         <div className="Icon3"></div>
-                        <img src={process.env.PUBLIC_URL + "/img/icon_2.png"}
-                            srcSet="img/icon_2@2x.png 2x,
-                                    img/icon_2@3x.png 3x"
+                        <img src={require("../assets/Icon_2.png")}
                             className="Icon2"></img>
                     </div>
                 </div>
