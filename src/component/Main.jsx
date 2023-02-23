@@ -73,6 +73,21 @@ class Main extends Component {
                         console.log(JSON.parse(response4.data).response.body);
                         
                         let datas = JSON.parse(response4.data).response.body.items;
+
+                        // 통합대기환경지수로 종합문구 설정
+                        if(datas[0].khaiValue > 0 && datas[0].khaiValue < 51){
+                            //좋음
+                            datas[0].khaiValueText = "최고 깨끗한 공기";    
+                        } else if(datas[0].khaiValue > 50 && datas[0].khaiValue < 101){
+                            //보통
+                            datas[0].khaiValueText = "보통의 대기 상태";
+                        } else if(datas[0].khaiValue > 100 && datas[0].khaiValue < 251){
+                            //나쁨
+                            datas[0].khaiValueText = "공기가 나빠요";
+                        } else if(datas[0].khaiValue > 250){
+                            //아주나쁨
+                            datas[0].khaiValueText = "공기가 아주 나빠요!!";
+                        }
                         this.setState({ data: datas, isLoading: false });
                     });
                 });
@@ -109,10 +124,10 @@ class Main extends Component {
                         {data[0].dataTime}
                     </span>
                     <span className="locate">
-                        {location[0].stationName}
+                        {location[0].stationName} 측정소
                     </span>
                     <span className="comment">
-                        최고 깨끗한 공기
+                        {data[0].khaiValueText}
                     </span>
                 </div>
                 <div className="Rectangle3"></div>
